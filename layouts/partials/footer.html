@@ -1,0 +1,33 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3>Navegación</h3>
+        <ul>
+          {{ range .Site.Menus.main }}
+          <li><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
+          {{ end }}
+        </ul>
+      </div>
+      {{ $terms := .Site.Taxonomies.categorias }}
+      {{ if $terms }}
+      <div class="footer-col">
+        <h3>Categorías</h3>
+        <ul>
+          {{ range $terms.Alphabetical }}
+          <li><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></li>
+          {{ end }}
+        </ul>
+      </div>
+      {{ end }}
+      <div class="footer-col">
+        <h3>Sígueme</h3>
+        <ul>
+          {{ with .Site.Params.github }}<li><a href="{{ . }}" rel="noopener me">GitHub</a></li>{{ end }}
+          <li><a href="{{ "index.xml" | relLangURL }}">RSS</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-bottom">&copy; {{ now.Year }} {{ .Site.Params.author }}. Construido con <a href="https://gohugo.io/" rel="noopener">Hugo</a>, hosteado en <a href="https://pages.github.com/" rel="noopener">GitHub Pages</a>.</p>
+  </div>
+</footer>

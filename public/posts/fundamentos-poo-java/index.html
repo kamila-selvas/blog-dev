@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head><script src="/blog-dev/livereload.js?mindelay=10&amp;v=2&amp;port=51385&amp;path=blog-dev/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Los 4 pilares de la Programación Orientada a Objetos, explicados con ejemplos · Kam Dev Blog</title>
+
+  
+  
+  
+    
+      
+    
+  
+  <meta name="description" content="Encapsulamiento, herencia, polimorfismo y abstracción explicados con ejemplos sencillos en Java, tal como los vimos en clase de Programación Orientada a Objetos.">
+  <meta name="author" content="Kam">
+  
+  
+  <meta name="keywords" content="java, poo, oop">
+
+  
+  <link rel="canonical" href="http://localhost:51385/blog-dev/posts/fundamentos-poo-java/">
+
+  
+  <meta name="robots" content="index, follow">
+  
+
+  
+  <link rel="icon" href="/blog-dev/images/favicon.svg" type="image/svg+xml">
+
+  
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Los 4 pilares de la Programación Orientada a Objetos, explicados con ejemplos">
+  <meta property="og:description" content="Encapsulamiento, herencia, polimorfismo y abstracción explicados con ejemplos sencillos en Java, tal como los vimos en clase de Programación Orientada a Objetos.">
+  <meta property="og:url" content="http://localhost:51385/blog-dev/posts/fundamentos-poo-java/">
+  <meta property="og:site_name" content="Kam Dev Blog">
+  <meta property="og:locale" content="es_MX">
+  
+  
+    <meta property="article:published_time" content="2026-09-08T10:00:00-06:00">
+    <meta property="article:modified_time" content="2026-09-08T10:00:00-06:00">
+    <meta property="article:author" content="Kam">
+    <meta property="article:tag" content="java"><meta property="article:tag" content="poo"><meta property="article:tag" content="oop">
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Los 4 pilares de la Programación Orientada a Objetos, explicados con ejemplos">
+  <meta name="twitter:description" content="Encapsulamiento, herencia, polimorfismo y abstracción explicados con ejemplos sencillos en Java, tal como los vimos en clase de Programación Orientada a Objetos.">
+
+  
+  
+  
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Kam"},"dateModified":"2026-09-08T10:00:00-06:00","datePublished":"2026-09-08T10:00:00-06:00","description":"Encapsulamiento, herencia, polimorfismo y abstracción explicados con ejemplos sencillos en Java, tal como los vimos en clase de Programación Orientada a Objetos.","headline":"Los 4 pilares de la Programación Orientada a Objetos, explicados con ejemplos","mainEntityOfPage":{"@id":"http://localhost:51385/blog-dev/posts/fundamentos-poo-java/","@type":"WebPage"},"publisher":{"@type":"Person","name":"Kam"}}</script>
+  
+
+  
+  
+  <link rel="stylesheet" href="/blog-dev/css/style.min.b0e1fbb6fff96ec149cc1af5aebb61e13f0d42dcffe7e7e45ccadf09b3f8871d.css" integrity="sha256-sOH7tv/5bsFJzBr1rrth4T8NQtz/5&#43;fkXMrfCbP4hx0=">
+</head>
+
+<body>
+  <header class="site-header">
+  <div class="container">
+    <a class="site-title" href="/blog-dev/">Kam Dev Blog</a>
+    <nav aria-label="Navegación principal">
+      <ul>
+        
+        <li><a href="/blog-dev/">Inicio</a></li>
+        
+        <li><a href="/blog-dev/posts/">Posts</a></li>
+        
+        <li><a href="/blog-dev/categorias/">Categorías</a></li>
+        
+        <li><a href="/blog-dev/about/">Acerca de</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+  <main>
+    
+<div class="container-narrow">
+  <article itemscope itemtype="https://schema.org/BlogPosting">
+    <header class="post-header">
+      <h1 itemprop="headline">Los 4 pilares de la Programación Orientada a Objetos, explicados con ejemplos</h1>
+      <p class="post-meta">
+        <time datetime="2026-09-08" itemprop="datePublished">8 de September, 2026</time>
+        · <span itemprop="author">Kam</span>
+         · Programación Orientada a Objetos
+         · 2 min de lectura
+      </p>
+    </header>
+
+    
+    <img class="cover" style="aspect-ratio:16/7; margin-bottom:1.5rem;" src="/blog-dev/images/covers/poo-java.svg" alt="">
+    
+
+    
+    <aside class="toc" aria-label="Tabla de contenidos">
+      <strong>Contenido</strong>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-encapsulamiento">1. Encapsulamiento</a></li>
+    <li><a href="#2-herencia">2. Herencia</a></li>
+    <li><a href="#3-polimorfismo">3. Polimorfismo</a></li>
+    <li><a href="#4-abstracción">4. Abstracción</a></li>
+    <li><a href="#por-qué-importa-esto-en-la-práctica">Por qué importa esto en la práctica</a></li>
+  </ul>
+</nav>
+    </aside>
+    
+
+    <div class="post-content" itemprop="articleBody">
+      <p>Uno de los temas que más se repite en la carrera es POO, así que aquí va un resumen propio de los cuatro pilares, con ejemplos cortos en Java para no olvidarlos.</p>
+<h2 id="1-encapsulamiento">1. Encapsulamiento</h2>
+<p>Consiste en ocultar los datos internos de una clase y solo exponer lo necesario a través de métodos públicos (getters/setters).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CuentaBancaria</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">double</span> saldo; <span style="color:#75715e">// privado: nadie fuera de la clase lo toca directo</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getSaldo</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> saldo;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">depositar</span>(<span style="color:#66d9ef">double</span> monto) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (monto <span style="color:#f92672">&gt;</span> 0) {
+</span></span><span style="display:flex;"><span>            saldo <span style="color:#f92672">+=</span> monto;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>La idea es que nadie pueda poner <code>saldo = -500</code> directamente desde fuera; todo pasa por métodos que controlan las reglas de negocio.</p>
+<h2 id="2-herencia">2. Herencia</h2>
+<p>Permite que una clase reutilice atributos y comportamiento de otra clase &ldquo;padre&rdquo;.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Vehiculo</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> String marca;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">arrancar</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(marca <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; está arrancando...&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Auto</span> <span style="color:#66d9ef">extends</span> Vehiculo {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> numPuertas;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>Auto</code> hereda <code>marca</code> y <code>arrancar()</code> sin tener que reescribirlos.</p>
+<h2 id="3-polimorfismo">3. Polimorfismo</h2>
+<p>Es la capacidad de que un mismo método se comporte distinto según la clase que lo implemente (sobreescritura / <em>override</em>).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Animal</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">hacerSonido</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;El animal hace un sonido&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Perro</span> <span style="color:#66d9ef">extends</span> Animal {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">hacerSonido</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Guau guau&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Gato</span> <span style="color:#66d9ef">extends</span> Animal {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">hacerSonido</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Miau&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Animal<span style="color:#f92672">[]</span> animales <span style="color:#f92672">=</span> { <span style="color:#66d9ef">new</span> Perro(), <span style="color:#66d9ef">new</span> Gato() };
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (Animal a : animales) {
+</span></span><span style="display:flex;"><span>    a.<span style="color:#a6e22e">hacerSonido</span>(); <span style="color:#75715e">// cada uno responde diferente</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="4-abstracción">4. Abstracción</h2>
+<p>Se trata de modelar solo lo relevante de un objeto para el problema que se está resolviendo, ignorando los detalles innecesarios. En Java se apoya mucho en clases abstractas e interfaces:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Figura</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">calcularArea</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Circulo</span> <span style="color:#66d9ef">extends</span> Figura {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">double</span> radio;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Circulo(<span style="color:#66d9ef">double</span> radio) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">radio</span> <span style="color:#f92672">=</span> radio;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">calcularArea</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Math.<span style="color:#a6e22e">PI</span> <span style="color:#f92672">*</span> radio <span style="color:#f92672">*</span> radio;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>No necesitamos saber cómo calcula cada figura su área desde afuera, solo que <strong>toda figura puede calcular un área</strong>.</p>
+<h2 id="por-qué-importa-esto-en-la-práctica">Por qué importa esto en la práctica</h2>
+<p>Estos cuatro pilares no son solo teoría de examen: son la base de por qué los diagramas de clases (UML) se ven como se ven, y por qué en las actividades de clase nos piden separar responsabilidades entre clases en vez de meter toda la lógica en una sola.</p>
+
+    </div>
+
+    
+    <footer class="post-tags">
+      <span>Etiquetas:</span>
+      
+      <a class="tag" href="/blog-dev/tags/java/">#java</a>
+      
+      <a class="tag" href="/blog-dev/tags/poo/">#poo</a>
+      
+      <a class="tag" href="/blog-dev/tags/oop/">#oop</a>
+      
+    </footer>
+    
+  </article>
+
+  <nav class="post-nav" aria-label="Navegación entre posts">
+    
+    <a href="/blog-dev/posts/listas-enlazadas-estructuras-de-datos/">Listas enlazadas: la base de las estructuras de datos dinámicas &rarr;</a>
+  </nav>
+</div>
+
+  </main>
+  <footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3>Navegación</h3>
+        <ul>
+          
+          <li><a href="/blog-dev/">Inicio</a></li>
+          
+          <li><a href="/blog-dev/posts/">Posts</a></li>
+          
+          <li><a href="/blog-dev/categorias/">Categorías</a></li>
+          
+          <li><a href="/blog-dev/about/">Acerca de</a></li>
+          
+        </ul>
+      </div>
+      
+      
+      <div class="footer-col">
+        <h3>Categorías</h3>
+        <ul>
+          
+          <li><a href="/blog-dev/categorias/estructura-de-datos/">Estructura de Datos</a></li>
+          
+          <li><a href="/blog-dev/categorias/programaci%C3%B3n-orientada-a-objetos/">Programación Orientada a Objetos</a></li>
+          
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h3>Sígueme</h3>
+        <ul>
+          <li><a href="https://github.com/kam-dev" rel="noopener me">GitHub</a></li>
+          <li><a href="/blog-dev/index.xml">RSS</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-bottom">&copy; 2026 Kam. Construido con <a href="https://gohugo.io/" rel="noopener">Hugo</a>, hosteado en <a href="https://pages.github.com/" rel="noopener">GitHub Pages</a>.</p>
+  </div>
+</footer>
+
+</body>
+</html>

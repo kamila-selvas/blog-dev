@@ -1,0 +1,59 @@
+baseURL = "https://kam-dev.github.io/blog-dev/"
+languageCode = "es-MX"
+title = "Kam Dev Blog"
+theme = ""
+enableRobotsTXT = true
+summarylength = 40
+capitalizeListTitles = false
+
+[params]
+  description = "Blog personal donde documento lo que aprendo en mis clases de Ingeniería en Tecnologías de la Información e Innovación Digital: programación, estructuras de datos, desarrollo web, bases de datos y más."
+  author = "Kam"
+  keywords = ["desarrollo web", "programación", "estructuras de datos", "POO", "Java", "bases de datos", "UPChiapas", "ITIID"]
+  # Cambia esto por tu handle real de redes / GitHub si quieres mostrarlo en el footer
+  github = "https://github.com/kam-dev"
+  # Pon aquí tu código de verificación de Google Search Console cuando lo tengas
+  googleSiteVerification = ""
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+[menu]
+  [[menu.main]]
+    name = "Inicio"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Posts"
+    url = "/posts/"
+    weight = 2
+  [[menu.main]]
+    name = "Categorías"
+    url = "/categorias/"
+    weight = 3
+  [[menu.main]]
+    name = "Acerca de"
+    url = "/about/"
+    weight = 4
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+
+[privacy]
+  [privacy.googleAnalytics]
+    respectDoNotTrack = true
+
+[taxonomies]
+  tag = "tags"
+  categories = "categorias"

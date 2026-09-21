@@ -1,0 +1,60 @@
+{{ define "main" }}
+<section class="hero" aria-label="Presentación">
+  <div class="container hero-flex">
+    <div class="hero-inner">
+      <p class="eyebrow">Bitácora de aprendizaje</p>
+      <h1>{{ .Site.Title }}</h1>
+      <p>{{ .Site.Params.description }}</p>
+      <a class="btn" href="{{ "posts/" | relLangURL }}">Ver todos los posts</a>
+    </div>
+    <div class="hero-photo">
+      <img src="{{ "images/foto-kam.jpeg" | relURL }}" alt="{{ .Site.Params.author }}, autora del blog">
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  {{ $terms := .Site.Taxonomies.categorias }}
+  {{ if $terms }}
+  <section aria-label="Categorías">
+    <p class="section-title">Categorías</p>
+    <div class="category-grid">
+      {{ range $terms.Alphabetical }}
+      <a class="category-tile" href="{{ .Page.RelPermalink }}">
+        <span>{{ .Page.Title }}</span>
+      </a>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  <section aria-label="Últimos posts">
+    <h2 class="post-grid-title">Últimos posts</h2>
+    <p class="post-grid-subtitle">Notas, ejercicios y avances de mis materias en ITIID, explicados con mis propias palabras.</p>
+    <div class="post-list">
+      {{ range first 9 (where .Site.RegularPages "Type" "posts") }}
+      <article class="post-card">
+        <a href="{{ .RelPermalink }}">
+          {{ if .Params.cover }}
+          <img class="cover" src="{{ .Params.cover | relURL }}" alt="" loading="lazy">
+          {{ else }}
+          <img class="cover" src="{{ "images/covers/listas-enlazadas.svg" | relURL }}" alt="" loading="lazy">
+          {{ end }}
+        </a>
+        <div class="card-body">
+          <p class="post-meta">
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 Jan, 2006" }}</time>
+            {{ with .Params.categorias }} · {{ delimit . ", " }}{{ end }}
+          </p>
+          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          <p class="excerpt">{{ .Summary | plainify | truncate 110 }}</p>
+          <a class="read-more" href="{{ .RelPermalink }}">Leer más &rarr;</a>
+        </div>
+      </article>
+      {{ else }}
+      <p>Todavía no hay posts publicados.</p>
+      {{ end }}
+    </div>
+  </section>
+</div>
+{{ end }}

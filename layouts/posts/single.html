@@ -1,0 +1,44 @@
+{{ define "main" }}
+<div class="container-narrow">
+  <article itemscope itemtype="https://schema.org/BlogPosting">
+    <header class="post-header">
+      <h1 itemprop="headline">{{ .Title }}</h1>
+      <p class="post-meta">
+        <time datetime="{{ .Date.Format "2006-01-02" }}" itemprop="datePublished">{{ .Date.Format "2 de January, 2006" }}</time>
+        · <span itemprop="author">{{ .Site.Params.author }}</span>
+        {{ with .Params.categorias }} · {{ delimit . ", " }}{{ end }}
+        {{ if .Params.readingTime }} · {{ .Params.readingTime }} min de lectura{{ else }} · {{ .ReadingTime }} min de lectura{{ end }}
+      </p>
+    </header>
+
+    {{ if .Params.cover }}
+    <img class="cover" style="aspect-ratio:16/7; margin-bottom:1.5rem;" src="{{ .Params.cover | relURL }}" alt="">
+    {{ end }}
+
+    {{ if .Params.toc }}
+    <aside class="toc" aria-label="Tabla de contenidos">
+      <strong>Contenido</strong>
+      {{ .TableOfContents }}
+    </aside>
+    {{ end }}
+
+    <div class="post-content" itemprop="articleBody">
+      {{ .Content }}
+    </div>
+
+    {{ with .Params.tags }}
+    <footer class="post-tags">
+      <span>Etiquetas:</span>
+      {{ range . }}
+      <a class="tag" href="{{ "tags/" | relLangURL }}{{ . | urlize }}/">#{{ . }}</a>
+      {{ end }}
+    </footer>
+    {{ end }}
+  </article>
+
+  <nav class="post-nav" aria-label="Navegación entre posts">
+    {{ with .PrevInSection }}<a href="{{ .RelPermalink }}">&larr; {{ .Title }}</a>{{ end }}
+    {{ with .NextInSection }}<a href="{{ .RelPermalink }}">{{ .Title }} &rarr;</a>{{ end }}
+  </nav>
+</div>
+{{ end }}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>listas-enlazadas on Kam Dev Blog</title>
+		<link>http://localhost:51385/blog-dev/tags/listas-enlazadas/</link>
+		<description>Recent content in listas-enlazadas on Kam Dev Blog</description>
+		<generator>Hugo</generator>
+		<language>es-MX</language>
+		
+		
+		
+		
+			<lastBuildDate>Tue, 15 Sep 2026 10:00:00 -0600</lastBuildDate>
+		
+			<atom:link href="http://localhost:51385/blog-dev/tags/listas-enlazadas/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Listas enlazadas: la base de las estructuras de datos dinámicas</title>
+				<link>http://localhost:51385/blog-dev/posts/listas-enlazadas-estructuras-de-datos/</link>
+				<pubDate>Tue, 15 Sep 2026 10:00:00 -0600</pubDate>
+				<guid>http://localhost:51385/blog-dev/posts/listas-enlazadas-estructuras-de-datos/</guid>
+				<description>&lt;p&gt;En la materia de &lt;strong&gt;Estructura de Datos&lt;/strong&gt; empezamos a ver por qué los arreglos no siempre son la mejor opción para guardar información, y ahí es donde entran las &lt;strong&gt;listas enlazadas&lt;/strong&gt;. Aquí dejo mis notas de esta semana, con ejemplos en Java.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>
