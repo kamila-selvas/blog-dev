@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: http://localhost:51385/blog-dev/sitemap.xml
