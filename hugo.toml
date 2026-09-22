@@ -1,4 +1,4 @@
-baseURL = "https://kam-dev.github.io/blog-dev/"
+﻿baseURL = "https://kamila-selvas.github.io/blog-dev/"
 languageCode = "es-MX"
 title = "Kam Dev Blog"
 theme = ""
@@ -10,9 +10,7 @@ capitalizeListTitles = false
   description = "Blog personal donde documento lo que aprendo en mis clases de Ingeniería en Tecnologías de la Información e Innovación Digital: programación, estructuras de datos, desarrollo web, bases de datos y más."
   author = "Kam"
   keywords = ["desarrollo web", "programación", "estructuras de datos", "POO", "Java", "bases de datos", "UPChiapas", "ITIID"]
-  # Cambia esto por tu handle real de redes / GitHub si quieres mostrarlo en el footer
-  github = "https://github.com/kam-dev"
-  # Pon aquí tu código de verificación de Google Search Console cuando lo tengas
+  github = "https://github.com/kamila-selvas"
   googleSiteVerification = ""
 
 [outputs]
